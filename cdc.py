@@ -6,10 +6,10 @@ import os
 def lambda_handler(event, context):
     region = os.environ['region'] 
     service = os.environ['service_name']
-    host=os.environ['host']
-    index='data'
+    hostname=os.environ['host']
+    index_name='data'
     index_type=os.environ['index_type']
-    url=host + '/' + index + '/' + index_type +'/'
+    url=hostname + '/' + index_name + '/' + index_type +'/'
     headers = { "Content-Type": "application/json" }
     credentials = boto3.Session().get_credentials()
     awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, region, service, session_token=credentials.token) 
