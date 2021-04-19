@@ -1,14 +1,14 @@
 import csv
 import os
 def lambda_handler(event, context):
-    region='us-east-1'
-    file_name='cupcake.csv'
+    region_name='us-east-1'
+    filename='cupcake.csv'
     bucket_name='borderfree1'
     table_name='cakedata'
     records=[]
     s3=boto3.client('s3')            
-    dynamodb_client = boto3.client('dynamodb', region_name=region)
-    s3_object= s3.get_object(Bucket=bucket_name, Key=file_name)
+    dynamodb_client = boto3.client('dynamodb', region_name=region_name)
+    s3_object= s3.get_object(Bucket=bucket_name, Key=filename)
     records = s3_object['Body'].read().decode('utf-8').split('\n')
     header=True
     count=0
