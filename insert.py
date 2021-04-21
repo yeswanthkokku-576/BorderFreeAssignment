@@ -12,11 +12,11 @@ def lambda_handler(event, context):
     records = s3_object['Body'].read().decode('utf-8').split('\n')
     header=True
     count=0
-    for iterator in range(len(records)-1):
+    for i in range(len(records)-1):
         if (header):
             header=False
             continue
-        data=records[iterator]
+        data=records[i]
         count=count+1
         data_list=data.split(",")
         Month=data_list[0]
