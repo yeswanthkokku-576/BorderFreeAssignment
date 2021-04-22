@@ -10,11 +10,9 @@ def lambda_handler(event, context):
     dynamodb_client = boto3.client('dynamodb', region_name=region_name)
     s3_object= s3.get_object(Bucket=bucket_name, Key=filename)
     records = s3_object['Body'].read().decode('utf-8').split('\n')
-    header=True
     count=0
     for i in range(len(records)-1):
-        if (header):
-            header=False
+        if (i==0):
             continue
         data=records[i]
         count=count+1
