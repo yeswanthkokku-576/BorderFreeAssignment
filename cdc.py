@@ -17,10 +17,7 @@ def lambda_handler(event, context):
         # To Get the primary key for using as Elasticsearch ID
         id = record['dynamodb']['Keys']['id']['S']
         #Checking the condition of eventname while databse update this trigger will be called
-        if record['eventName'] == 'REMOVE':
-            document = record['dynamodb']['OldImage']
-            r = requests.put(url + id, auth=awsauth, json=document, headers=headers)
-        elif record['eventName'] == 'MODIFY' or record['eventName'] == 'INSERT':
+        if record['eventName'] == 'MODIFY' or record['eventName'] == 'INSERT':
             document = record['dynamodb']['NewImage']
             print(document)
             r = requests.put(url + id, auth=awsauth, json=document, headers=headers)
