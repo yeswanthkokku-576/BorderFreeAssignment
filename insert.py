@@ -15,6 +15,8 @@ def lambda_handler(event, context):
     records = s3_object['Body'].read().decode('utf-8').split('\n')
     count=0
     for i in range(len(records)-1):
+        if i==0:
+           continue
         data=records[i]
         count=count+1
         data_list=data.split(",")
