@@ -20,7 +20,7 @@ def lambda_handler(event, context):
         data=records[i]
         count=count+1
         data_list=data.split(",")
-        print(data_list[1])
+        #print(data_list[1])
         Month=data_list[0]
         cupcake=data_list[1].replace('\r', '')
         #inserting data to dynamodb using boto3 put_item method
