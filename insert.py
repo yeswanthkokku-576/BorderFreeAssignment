@@ -11,7 +11,6 @@ def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb',region_name = 'us-east-1')
     table = dynamodb.Table('cakedata')
     s3_object= s3.get_object(Bucket=bucket_name, Key=file_name)
-    print(type(s3_object))
     records = s3_object['Body'].read().decode('utf-8').split('\n')
     count=0
     for i in range(len(records)-1):
